@@ -15,8 +15,6 @@
  * limitations under the License.
  */
 package org.apache.lucene.demo;
-import org.apache.lucene.demo.CMPT456Analyzer;
-
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,15 +36,19 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
 
-/** Simple command-line based search demo. */
-public class SearchFiles {
+import org.apache.lucene.demo.CMPT456Analyzer;
+import org.apache.lucene.demo.CMPT456Similarity;
 
-  private SearchFiles() {}
+
+/** Simple command-line based search demo. */
+public class TFIDFSearchFiles {
+
+  private TFIDFSearchFiles() {}
 
   /** Simple command-line based search demo. */
   public static void main(String[] args) throws Exception {
     String usage =
-      "Usage:\tjava org.apache.lucene.demo.SearchFiles [-index dir] [-field f] [-repeat n] [-queries file] [-query string] [-raw] [-paging hitsPerPage]\n\nSee http://lucene.apache.org/core/4_1_0/demo/ for details.";
+      "Usage:\tjava org.apache.lucene.demo.TFIDFSearchFiles [-index dir] [-field f] [-repeat n] [-queries file] [-query string] [-raw] [-paging hitsPerPage]\n\nSee http://lucene.apache.org/core/4_1_0/demo/ for details.";
     if (args.length > 0 && ("-h".equals(args[0]) || "-help".equals(args[0]))) {
       System.out.println(usage);
       System.exit(0);
@@ -90,8 +92,11 @@ public class SearchFiles {
     
     IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(index)));
     IndexSearcher searcher = new IndexSearcher(reader);
-    Analyzer analyzer = new StandardAnalyzer();
-    // Analyzer analyzer = new CMPT456Analyzer();
+
+    //CMPT 456
+    CMPT456Similarity similar = new CMPT456Similarity();
+    searcher.setSimilarity(similar);
+    Analyzer analyzer = new CMPT456Analyzer();
 
     BufferedReader in = null;
     if (queries != null) {
@@ -187,6 +192,7 @@ public class SearchFiles {
           String title = doc.get("title");
           if (title != null) {
             System.out.println("   Title: " + doc.get("title"));
+            System.out.println("CMPT456-TFIDFSimilarity-Ranking-Score: " + hits[i].score);
           }
         } else {
           System.out.println((i+1) + ". " + "No path for this document");
