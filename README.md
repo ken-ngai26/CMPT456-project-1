@@ -1,3 +1,6 @@
+The modified part 
+
+https://github.com/ken-ngai26/CMPT456-project-1/tree/CMPT456-project-1/lucene/demo/src/java/org/apache/lucene/demo
 <!--
     Licensed to the Apache Software Foundation (ASF) under one or more
     contributor license agreements.  See the NOTICE file distributed with
