@@ -1,6 +1,4 @@
-The modified part 
 
-https://github.com/ken-ngai26/CMPT456-project-1/tree/CMPT456-project-1/lucene/demo/src/java/org/apache/lucene/demo
 <!--
     Licensed to the Apache Software Foundation (ASF) under one or more
     contributor license agreements.  See the NOTICE file distributed with
@@ -19,6 +17,11 @@ https://github.com/ken-ngai26/CMPT456-project-1/tree/CMPT456-project-1/lucene/de
  -->
 
 # Apache Lucene and Solr
+
+The modified part 
+
+https://github.com/ken-ngai26/CMPT456-project-1/tree/CMPT456-project-1/lucene/demo/src/java/org/apache/lucene/demo
+
 
 Apache Lucene is a high-performance, full featured text search engine library
 written in Java.
